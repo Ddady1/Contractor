@@ -23,11 +23,24 @@ else:
 
 
 import bcrypt
+import os
+import json
 
 
 def write_pass_file(pwd):
-    with open('C:\\Users\\dady\\PycharmProjects\\Contractor\\passtest.txt', 'w') as f:
-        f.write(str(pwd))
+    path = 'assets/secret.json'
+    if os.path.isfile(path):
+        f = open(path)
+        data = json.load(f)
+        return data
+    pwd = pwd.decode()
+    dict = {}
+    dict['password'] = pwd
+    js_object = json.dumps(dict, indent=4)
+    with open('assets/secret.json', 'w') as f:
+        f.write(js_object)
+
+
 
 
 def encrypt(password):
@@ -35,8 +48,12 @@ def encrypt(password):
     hashed = bcrypt.hashpw(password, bcrypt.gensalt(10))
     return hashed
 
-def check(passen):
-
+def check(passen, stren):
+    check = passen.encode('utf-8')
+    if bcrypt.checkpw(check, stren):
+        print('OK')
+    else:
+        print('FALSE')
 
 
 pawss = input('pass: ')
@@ -44,7 +61,7 @@ pawss = input('pass: ')
 stren = encrypt(pawss)
 write_pass_file(stren)
 
-check(input('check pass: '))
+check(input('check pass: '), stren)
 
 
 
