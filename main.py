@@ -34,7 +34,7 @@ def write_pass_file(pwd):
         data = json.load(f)
         return data
     pwd = pwd.decode()
-    dict = {}
+    #dict = {}
     dict['password'] = pwd
     js_object = json.dumps(dict, indent=4)
     with open('assets/secret.json', 'w') as f:
