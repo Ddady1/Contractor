@@ -1,31 +1,10 @@
-'''import bcrypt
-
-<strong># store your password</strong>:
-password = str(input("input password: "))
-
-<strong># Encode the stored password</strong>:
-password = password.encode('utf-8')
-
-<strong># Encrypt the stored pasword</strong>:
-hashed = bcrypt.hashpw(password, bcrypt.gensalt(10))
-
-<strong># Create an authenticating password input field to check if a user enters the correct password</strong>
-check = str(input("check password: "))
-
-<strong># Encode the authenticating password as well</strong>
-check = check.encode('utf-8')
-
-<strong># Use conditions to compare the authenticating password with the stored one</strong>:
-if bcrypt.checkpw(check, hashed):
-    print("login success")
-else:
-    print("incorrect password")'''
-
-
 import bcrypt
 import os
 import json
-
+import tkinter as tk
+from tkinter import ttk
+from ctypes import windll
+from tkinter.messagebox import showinfo, askyesno
 
 def write_pass_file(pwd):
     path = 'assets/secret.json'
@@ -56,13 +35,30 @@ def check(passen, stren):
         print('FALSE')
 
 
-pawss = input('pass: ')
+'''pawss = input('pass: ')
 
 stren = encrypt(pawss)
 write_pass_file(stren)
 
-check(input('check pass: '), stren)
+check(input('check pass: '), stren)'''
+windll.shcore.SetProcessDpiAwareness(1)
+text_color = 'DodgerBlue4'
+# DB type window
+
+root = tk.Tk()
+root.title('Contractor - DataBase Type')
+root.geometry('450x350+350+150')
+root.resizable(False, False)
+#.iconbitmap('assets/reminder.ico')
+
+# DB type text
+
+main_label = ttk.Label(root, text='Choose your Database type', foreground=text_color, font=('Ariel', 14, 'bold'))
+main_label.place(x=100, y=10)
 
 
 
 
+
+
+root.mainloop()
