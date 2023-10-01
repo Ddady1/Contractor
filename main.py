@@ -53,8 +53,11 @@ root.resizable(False, False)
 
 # DB type text
 
-main_label = ttk.Label(root, text='Choose your Database type', foreground=text_color, font=('Ariel', 14, 'bold'))
+main_label = ttk.Label(root, text='Choose your Database type', foreground=text_color, font=('Ariel', 12, 'bold'))
 main_label.place(x=100, y=10)
+
+label_frame = tk.LabelFrame(root, text='Please choose DataBase to work with', foreground=text_color, height=150, font=('Ariel', 12, 'bold'))
+label_frame.pack(expand='yes', fill='both')
 
 
 
