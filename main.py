@@ -20,12 +20,11 @@ def write_pass_file(pwd):
         f.write(js_object)
 
 
-
-
 def encrypt(password):
     password = password.encode('utf-8')
     hashed = bcrypt.hashpw(password, bcrypt.gensalt(10))
     return hashed
+
 
 def check(passen, stren):
     check = passen.encode('utf-8')
@@ -34,34 +33,24 @@ def check(passen, stren):
     else:
         print('FALSE')
 
-
 '''pawss = input('pass: ')
 
 stren = encrypt(pawss)
 write_pass_file(stren)
 
 check(input('check pass: '), stren)'''
+
+# DB type window
+def db_win(color):
+    root = tk.Tk()
+    root.title('Contractor - DataBase Type')
+    root.geometry('450x350+350+150')
+    root.resizable(False, False)
+
+
+    root.mainloop()
+
+
 windll.shcore.SetProcessDpiAwareness(1)
 text_color = 'DodgerBlue4'
-# DB type window
-
-root = tk.Tk()
-root.title('Contractor - DataBase Type')
-root.geometry('450x350+350+150')
-root.resizable(False, False)
-#.iconbitmap('assets/reminder.ico')
-
-# DB type text
-
-main_label = ttk.Label(root, text='Choose your Database type', foreground=text_color, font=('Ariel', 12, 'bold'))
-main_label.place(x=100, y=10)
-
-label_frame = tk.LabelFrame(root, text='Please choose DataBase to work with', foreground=text_color, height=150, font=('Ariel', 12, 'bold'))
-label_frame.pack(expand='yes', fill='both')
-
-
-
-
-
-
-root.mainloop()
+db_win(text_color)
