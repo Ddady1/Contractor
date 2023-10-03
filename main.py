@@ -50,19 +50,21 @@ def db_win(color):
     root.title('Contractor - DataBase Type')
     root.geometry('450x350+350+150')
     root.resizable(False, False)
-    db_var = tk.IntVar
-    lb_subject = ttk.Label(root, text='Choose Database type:', foreground=text_color, font=('Ariel', 12, 'bold'))
+    db_var = tk.IntVar()
+    lb_subject = ttk.Label(root, text='Choose Database type:')
     lb_subject.place(x=10, y=10)
-    rdb_dbExcel = tk.Radiobutton(text='Secure Excel file', foreground=text_color, font=('Ariel', 11, 'bold'), variable=db_var, value=1)
+    #rdb_dbexcel = tk.Radiobutton(root, text='excel', variable=db_var, value=0)
+    #rdb_dbexcel.grid(row=1,column=1,padx=30,pady=30)
+    rdb_dbExcel = tk.Radiobutton(root, text='Secure Excel file', variable=db_var, value=0, foreground=color, font=('Ariel', 11, 'bold'))
     rdb_dbExcel.place(x=30, y=50)
-    rdb_dbSqlite =tk.Radiobutton(text='SQLite DB', foreground=text_color, font=('Ariel', 11, 'bold'), variable=db_var, value=2)
+    rdb_dbSqlite = tk.Radiobutton(root, text='SQLite DB', variable=db_var, value=1, foreground=color, font=('Ariel', 11, 'bold'))
     rdb_dbSqlite.place(x=30, y=90)
-    rdb_dbDynamo = tk.Radiobutton(text='Dynamo DB', foreground=text_color, font=('Ariel', 11, 'bold'), variable=db_var, value=3)
+    #rdb_sqlite = tk.Radiobutton(root, text='sqlite', variable=db_var, value=0)
+    #rdb_sqlite.grid(row=2, column=1)
+    rdb_dbDynamo = tk.Radiobutton(root, text='Dynamo DB', variable=db_var, value=2, foreground=color, font=('Ariel', 11, 'bold'))
     rdb_dbDynamo.place(x=30, y=130)
-
-
-
-
+    #rdb_mongo = tk.Radiobutton(root, text='mongo', variable=db_var, value=0)
+    #rdb_mongo.grid(row=3, column=1)
 
     root.mainloop()
 
@@ -70,7 +72,7 @@ def db_win(color):
 
 
 def main_win(color):
-    root =tk.Tk()
+    root = tk.Tk()
     root.title('Contractor')
     root.geometry('1500x900+150+50')
     root.resizable(False, False)
