@@ -1,19 +1,23 @@
 from tkinter import ttk
 
 import tkinter as tk
-my_w = tk.Tk()
-my_w.geometry("500x120")  # Size of the window
 
-r1_v = tk.IntVar()
+root = tk.Tk()
+root.title('Contractor - DataBase Type')
+root.geometry('450x350+350+150')
+root.resizable(False, False)
+db_var = tk.IntVar()
+lb_subject = ttk.Label(root, text='Choose Database type:')
+lb_subject.place(x=10, y=10)
+rdb_dbExcel = tk.Radiobutton(root, text='Secure Excel file', variable=db_var, value=0, foreground='Blue',
+                             font=('Ariel', 11, 'bold'))
+rdb_dbExcel.place(x=30, y=50)
+rdb_dbSqlite = tk.Radiobutton(root, text='SQLite DB', variable=db_var, value=1, foreground='Blue',
+                              font=('Ariel', 11, 'bold'))
+rdb_dbSqlite.place(x=30, y=90)
+rdb_dbDynamo = tk.Radiobutton(root, text='Dynamo DB', variable=db_var, value=2, foreground='Blue',
+                              font=('Ariel', 11, 'bold'))
+rdb_dbDynamo.place(x=30, y=130)
 
-r1 = tk.Radiobutton(my_w, text='Passed', variable=r1_v, value=0, foreground='Blue', font=('Ariel', 11, 'bold'))
-r1.grid(row=1,column=1,padx=30,pady=30)
-
-r2 = tk.Radiobutton(my_w, text='Failed', variable=r1_v, value=1, foreground='Blue', font=('Ariel', 11, 'bold'))
-r2.grid(row=1,column=2)
-
-r3 = tk.Radiobutton(my_w, text='Appearing', variable=r1_v, value=2, foreground='Blue', font=('Ariel', 11, 'bold'))
-r3.grid(row=1,column=3)
-
-my_w.mainloop()  # Keep the window open
+root.mainloop()
 
