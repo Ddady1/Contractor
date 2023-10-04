@@ -45,9 +45,8 @@ check(input('check pass: '), stren)'''
 # Text according to DB type
 
 def db_explain_text(num):
-    excel_text = 'You can save all data in a password secured Excel file.'
-    sqlite_text = 'You can save all data on a SQLite database server.\n' \
-                  '* Right now supported only on local network or PC *'
+    excel_text = 'You can save all data in a\n      password secured Excel file.'
+    sqlite_text = 'You can save all data on a SQLite database server.\n* Right now supported only on local network or PC *'
     dynamo_text = 'You can save all data on free cloud database.\n' \
                   'Special configuration is needed with access to the Internet'
 
@@ -76,14 +75,17 @@ def db_win(color):
     lb_subject.place(x=10, y=10)
     rdb_dbExcel = tk.Radiobutton(root, text='Secure Excel file', variable=db_var, value=0, foreground=color, font=('Ariel', 11, 'bold'))
     rdb_dbExcel.place(x=30, y=50)
+    lb_excel = tk.Label(root, text=db_explain_text(1), foreground=color, font=('Ariel', 11))
+    lb_excel.place(x=30, y=70)
     rdb_dbSqlite = tk.Radiobutton(root, text='SQLite DB', variable=db_var, value=1, foreground=color, font=('Ariel', 11, 'bold'))
-    rdb_dbSqlite.place(x=30, y=90)
+    rdb_dbSqlite.place(x=30, y=150)
+    lb_sqlite = tk.Label(root, text=db_explain_text(2), foreground=color, font=('Ariel', 11))
+    lb_sqlite.place(x=53, y=170)
     rdb_dbDynamo = tk.Radiobutton(root, text='Dynamo DB', variable=db_var, value=2, foreground=color, font=('Ariel', 11, 'bold'))
-    rdb_dbDynamo.place(x=30, y=130)
-    lb_frame = ttk.LabelFrame(root, text='Explenation')
-    lb_frame.place(x=10, y=150)
-    lb_explain = tk.Label(lb_frame, db_explain_text(db_var.get()))
-    lb_explain.place(x=10, y=152)
+    rdb_dbDynamo.place(x=30, y=250)
+    lb_dynamo = tk.Label(root, text=db_explain_text(3), foreground=color, font=('Ariel', 11))
+    lb_dynamo.place(x=10, y=270)
+
     root.mainloop()
 
 # Main Win
