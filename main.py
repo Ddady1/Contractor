@@ -42,6 +42,21 @@ stren = encrypt(pawss)
 write_pass_file(stren)
 
 check(input('check pass: '), stren)'''
+# Text according to DB type
+
+def db_explain_text(num):
+    excel_text = 'You can save all data in a password secured Excel file.'
+    sqlite_text = 'You can save all data on a SQLite database server.\n' \
+                  '* Right now supported only on local network or PC *'
+    dynamo_text = 'You can save all data on free cloud database.\n' \
+                  'Special configuration is needed with access to the Internet'
+
+    if num == 1:
+        return excel_text
+    elif num ==2:
+        return sqlite_text
+    else:
+        return dynamo_text
 
 # DB type window
 
@@ -52,10 +67,10 @@ def db_win(color):
     root.geometry('450x350+350+150')
     root.resizable(False, False)
     img = Image.open('assets/DB_pic.png')
-    img = img.resize((30, 30), Image.LANCZOS)
+    img = img.resize((150, 150), Image.LANCZOS)
     img = ImageTk.PhotoImage(img)
-    lb_db_pic = ttk.Label(image=img)
-    lb_db_pic.place(x=100, y=50)
+    lb_db_pic = ttk.Label(root, image=img)
+    lb_db_pic.place(x=250, y=20)
     db_var = tk.IntVar()
     lb_subject = ttk.Label(root, text='Choose Database type:', foreground=color, font=('Ariel', 12, 'bold'))
     lb_subject.place(x=10, y=10)
@@ -65,7 +80,10 @@ def db_win(color):
     rdb_dbSqlite.place(x=30, y=90)
     rdb_dbDynamo = tk.Radiobutton(root, text='Dynamo DB', variable=db_var, value=2, foreground=color, font=('Ariel', 11, 'bold'))
     rdb_dbDynamo.place(x=30, y=130)
-
+    lb_frame = ttk.LabelFrame(root, text='Explenation')
+    lb_frame.place(x=10, y=150)
+    lb_explain = tk.Label(lb_frame, db_explain_text(db_var.get()))
+    lb_explain.place(x=10, y=152)
     root.mainloop()
 
 # Main Win
@@ -81,5 +99,5 @@ def main_win(color):
 
 windll.shcore.SetProcessDpiAwareness(1)
 text_color = 'DodgerBlue4'
-main_win(text_color)
+#main_win(text_color)
 db_win(text_color)

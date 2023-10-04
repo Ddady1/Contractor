@@ -1,23 +1,16 @@
 from tkinter import ttk
-
+from PIL import ImageTk, Image
 import tkinter as tk
 
 root = tk.Tk()
 root.title('Contractor - DataBase Type')
 root.geometry('450x350+350+150')
 root.resizable(False, False)
-db_var = tk.IntVar()
-lb_subject = ttk.Label(root, text='Choose Database type:')
-lb_subject.place(x=10, y=10)
-rdb_dbExcel = tk.Radiobutton(root, text='Secure Excel file', variable=db_var, value=0, foreground='Blue',
-                             font=('Ariel', 11, 'bold'))
-rdb_dbExcel.place(x=30, y=50)
-rdb_dbSqlite = tk.Radiobutton(root, text='SQLite DB', variable=db_var, value=1, foreground='Blue',
-                              font=('Ariel', 11, 'bold'))
-rdb_dbSqlite.place(x=30, y=90)
-rdb_dbDynamo = tk.Radiobutton(root, text='Dynamo DB', variable=db_var, value=2, foreground='Blue',
-                              font=('Ariel', 11, 'bold'))
-rdb_dbDynamo.place(x=30, y=130)
+img = Image.open('assets/DB_pic.png')
+img = img.resize((30, 30), Image.LANCZOS)
+img = ImageTk.PhotoImage(img)
+lb_db_pic = ttk.Label(root, image=img)
+lb_db_pic.place(x=300, y=50)
 
 root.mainloop()
 
