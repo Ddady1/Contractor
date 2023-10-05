@@ -45,10 +45,9 @@ check(input('check pass: '), stren)'''
 # Text according to DB type
 
 def db_explain_text(num):
-    excel_text = 'You can save all data in a\n      password secured Excel file.'
-    sqlite_text = 'You can save all data on a SQLite database server.\n* Right now supported only on local network or PC *'
-    dynamo_text = 'You can save all data on free cloud database.\n' \
-                  'Special configuration is needed with access to the Internet'
+    excel_text = 'An Excel secured file.'
+    sqlite_text = 'SQLite database server.'
+    dynamo_text = 'A free cloud database.'
 
     if num == 1:
         return excel_text
@@ -60,7 +59,7 @@ def db_explain_text(num):
 # DB type window
 
 
-def db_win(color):
+def select_db_win(color):
     root = tk.Tk()
     root.title('Contractor - DataBase Type')
     root.geometry('450x350+350+150')
@@ -76,17 +75,31 @@ def db_win(color):
     rdb_dbExcel = tk.Radiobutton(root, text='Secure Excel file', variable=db_var, value=0, foreground=color, font=('Ariel', 11, 'bold'))
     rdb_dbExcel.place(x=30, y=50)
     lb_excel = tk.Label(root, text=db_explain_text(1), foreground=color, font=('Ariel', 11))
-    lb_excel.place(x=30, y=70)
+    lb_excel.place(x=53, y=73)
     rdb_dbSqlite = tk.Radiobutton(root, text='SQLite DB', variable=db_var, value=1, foreground=color, font=('Ariel', 11, 'bold'))
-    rdb_dbSqlite.place(x=30, y=150)
+    rdb_dbSqlite.place(x=30, y=130)
     lb_sqlite = tk.Label(root, text=db_explain_text(2), foreground=color, font=('Ariel', 11))
-    lb_sqlite.place(x=53, y=170)
+    lb_sqlite.place(x=53, y=153)
     rdb_dbDynamo = tk.Radiobutton(root, text='Dynamo DB', variable=db_var, value=2, foreground=color, font=('Ariel', 11, 'bold'))
-    rdb_dbDynamo.place(x=30, y=250)
+    rdb_dbDynamo.place(x=30, y=210)
     lb_dynamo = tk.Label(root, text=db_explain_text(3), foreground=color, font=('Ariel', 11))
-    lb_dynamo.place(x=10, y=270)
+    lb_dynamo.place(x=53, y=233)
+    bt_cancel = tk.Button(root, text='Cancel', height=1, width=8, foreground=color, font=('Ariel', 11), command=root.quit)
+    bt_cancel.place(x=250, y=290)
+    bt_next = tk.Button(root, text='Next', height=1, width=8, foreground=color, font=('Ariel', 11), command=lambda: [root.quit, input_db_win(text_color)])
+    bt_next.place(x=350, y=290)
 
     root.mainloop()
+
+
+def input_db_win(color):
+    root = tk.Tk()
+    root.title('Contractor - Database Setup')
+    root.geometry('450x350+350+150')
+    root.resizable(False, False)
+
+    root.mainloop()
+
 
 # Main Win
 
@@ -102,4 +115,4 @@ def main_win(color):
 windll.shcore.SetProcessDpiAwareness(1)
 text_color = 'DodgerBlue4'
 #main_win(text_color)
-db_win(text_color)
+select_db_win(text_color)
